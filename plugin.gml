@@ -1,4 +1,23 @@
+// So people like Hanako_Ikezawa won't screw up.
+// :^)
+if (isServerSentPlugin != 1) {
+    if (global.serverPluginList != '')
+        global.serverPluginList += ',bmp_expansion';
+    else
+        global.serverPluginList += 'bmp_expansion';
+    exit;
+}
+
+// <arctic> mod scale plugins are hard holy shit
 //Initiation script. When someone told me to keep it short and simple, I told them to suck my dick.
+
+globalvar expansion;
+expansion = id;
+
+spriteDirectory = directory + "\Sprites\";
+soundDirectory = directory + "\Sounds\";
+include = directory + "\include\";
+
 global.jumpFlameParticleTypeString="jumpFlameParticleType"
 global.jumpFlameParticleSystemString="jumpFlameParticleSystem"
 global.jumpDustParticleTypeString="jumpDustParticleType"
@@ -11,12 +30,9 @@ global.falconKickParticleTypeString="falconKickParticleType"
 global.falconKickParticleSystemString="falconKickParticleSystem"
 global.motionBlurParticleTypeString="motionBlurParticleType"
 global.motionBlurParticleSystemString="motionBlurParticlesystem"
-//Spriteloading.
-spriteDirectory=directory+"\Sprites\";
-if (isServerSentPlugin != 1) exit;
-globalvar expansion;
-expansion = id;
 
+
+//Spriteloading.
 ScoutRedKickS=sprite_add_sprite(spriteDirectory+"ScoutRedKickS"+".gmspr")
 ScoutRedWallS=sprite_add_sprite(spriteDirectory+"ScoutRedWallS"+".gmspr")
 ScoutRedFlipS=sprite_add_sprite(spriteDirectory+"ScoutRedFlipS"+".gmspr")
@@ -54,7 +70,6 @@ QuoteHudS= sprite_add_sprite(spriteDirectory+"HudBase.gmspr")
 QuoteNumbersS= sprite_add_sprite(spriteDirectory+"Numbers.gmspr")
 
 //Soundloading
-soundDirectory = directory + "\Sounds\";
 CSObjectHurtSnd=sound_add(soundDirectory+"CSObjectHurtSnd"+".wav",0,0)
 CSQuoteHurtSnd=sound_add(soundDirectory+"CSQuoteHurtSnd"+".wav",0,0)
 CSQuoteJumpSnd=sound_add(soundDirectory+"CSQuoteJumpSnd"+".wav",0,0)
@@ -124,7 +139,7 @@ QuoteExplosion = object_add();
 object_set_sprite(QuoteExplosion,quoteExplosionS);
 
 global.HealingParticle=object_add()
-global.HealingParticleS=sprite_add_sprite(argument0+"ParticleEffectS.gmspr")
+global.HealingParticleS=sprite_add_sprite(spriteDirectory+"ParticleEffectS.gmspr")
 object_set_sprite(global.HealingParticle,global.HealingParticleS)
 
 //VARIABLES FOR THE KILL LOG
@@ -154,8 +169,9 @@ global.hostGoldenSpur=ini_read_real("Plugins","quote_spur_HOSTVIP","0")
 ini_close()
 global.sent_bassie_value=0
 
-execute_file(directory+"\overheal.gml")
-execute_file(directory+"\scout.gml")
-execute_file(directory+"\heavy.gml")
-//execute_file(directory + "\quote_spur.gml");
-//execute_file(directory + "\Networking.gml");
+// include external resources
+execute_file(include + "overheal.gml")
+execute_file(include + "scout.gml")
+execute_file(include + "heavy.gml")
+execute_file(include + "quote.gml")
+execute_file(include + "Networking.gml");
