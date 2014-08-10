@@ -1,0 +1,7 @@
+TODO
+
+[ ] <BassMakesPaste> The part where the host receives the disguise number, finds a character on the team of that disguise with that class (or finds a character on that team without that class if nobody has that class) and sets the disguiseName of the disguiser to that person's name
+
+[ ] steal some sentry icons from RM and implement them :)
+
+[ ] dispenser netcode
