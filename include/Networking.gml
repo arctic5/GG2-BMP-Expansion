@@ -52,7 +52,7 @@ object_event_add(Character, ev_destroy, 0, '
         }
     }
 ');
-//object_event_add(PlayerControl, ev_step, ev_step_end, '
+object_event_add(PlayerControl, ev_step, ev_step_end, '
     while (PluginPacketGetBuffer(expansion.packetID) != -1)
     {
         receiveBuffer = PluginPacketGetBuffer(expansion.packetID);
