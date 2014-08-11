@@ -144,9 +144,11 @@ object_set_sprite(global.HealingParticle,global.HealingParticleS)
 //VARIABLES
 
 //Events
+hello = 101;
 customKillEvent = 1;
 bassieCheck = 2;
-disguiseEvent = 3;
+disguiseSendEvent = 3;
+disguiseReceiveEvent = 4;
 
 //kill log icons
 spurUncharged = 50;
@@ -156,6 +158,9 @@ spurLvIII = 53;
 spurLvIR = 54;
 spurLvIIR = 55;
 spurLvIIIR = 56;
+
+//misc
+global.welcomeBuffer = buffer_create();
 
 ini_open("gg2.ini")
 bassieKey=ini_read_string("Plugins","quote_spur_VIPSTATUS","nope.txt")
